@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: PopUp Pro Template: Isometric
- * Plugin URI:  http://www.stracker.net/
+ * Plugin URI:  https://premium.wpmudev.org/project/the-pop-over-plugin/
  * Description: Adds a new layout template to the PopUp Pro plugin.
  * Author:      Philipp Stracker
- * Author URI:  http://www.stracker.net/
+ * Author URI:  https://github.com/stracker-phil/
  * Version:     1.0.0
  * Text Domain: tpl-isometric
  *
@@ -51,6 +51,11 @@ class PopupTemplate_Isometric {
 
 	/**
 	 * Registers our custom template with the PopUp Pro plugin.
+	 *
+	 * This short function is all that is needed so PopUp Pro knows about the
+	 * new template!
+	 * The main work will be to modify the style.css file in the template
+	 * subdirectory, and maybe modify the HTML structure in template.php
 	 *
 	 * @since  1.0.0
 	 */
