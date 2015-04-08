@@ -1,0 +1,440 @@
+/**
+ * Style: Isometric
+ *
+ * Important notes:
+ * ----------------
+ *
+ * #messagebox  The selector #messagebox is replaced by the plugin to match the
+ *              current popup - so always prefix styles with #messagebox
+ *
+ * %styleurl%   This variable is replaced with the absolute URL to the folder
+ *              where this file is located. Prefix image-urls with this variable
+ *
+ * #000001      Theme colors that can be customized in the popup editor, they
+ * #000002      will be replaced with the real color code.
+ */
+
+/* Styles for the body tag, not the pop-up */
+.has-popup.no-scroll {
+  overflow: hidden;
+}
+.has-popup.no-scroll body {
+  overflow: hidden;
+}
+.wdpu-loading {
+  position: relative;
+}
+.wdpu-loading:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8) url(%styleurl%img/spinner.gif) center no-repeat;
+  z-index: 1000;
+  cursor: default;
+}
+
+#messagebox {
+  position: fixed;
+  z-index: 100000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0 54px 0 50px;
+}
+#messagebox.custom-size {
+  padding: 0;
+}
+#messagebox.inline {
+  position: relative;
+  overflow: visible;
+  background: transparent;
+  padding: 0;
+}
+#messagebox.inline .wdpu-msg {
+  max-width: 100%;
+  margin: 0;
+}
+#messagebox.custom-pos .wdpu-msg {
+  position: absolute;
+  display: inline-block;
+  margin: 0 0 30px;
+}
+#messagebox.no-title.no-subtitle .wdpu-head {
+  display: none;
+}
+#messagebox.no-title .wdpu-title {
+  display: none;
+}
+#messagebox.no-subtitle .wdpu-subtitle {
+  display: none;
+}
+#messagebox .wdpu-msg {
+  position: relative;
+  display: block;
+  margin: 0 auto 30px;
+  text-align: left;
+  background-color: #FFF;
+  box-shadow: 5px 5px 60px 5px rgba(0, 0, 0, 0.3);
+  font-size: 15px;
+
+  /* Size / responsiveness */
+  max-width: 800px;
+  min-width: 100px;
+}
+#messagebox .wdpu-msg:after {
+  content: '';
+
+  background: rgb(40,40,40);
+  background: -moz-linear-gradient(top,  rgba(40,40,40,1) 0%, rgba(60,60,60,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(40,40,40,1)), color-stop(100%,rgba(60,60,60,1)));
+  background: -webkit-linear-gradient(top,  rgba(40,40,40,1) 0%,rgba(60,60,60,1) 100%);
+  background: -o-linear-gradient(top,  rgba(40,40,40,1) 0%,rgba(60,60,60,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(40,40,40,1) 0%,rgba(60,60,60,1) 100%);
+  background: linear-gradient(to bottom,  rgba(40,40,40,1) 0%,rgba(60,60,60,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#282828', endColorstr='#3C3C3C',GradientType=0 );
+
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  left: 10px;
+  bottom: 0;
+  transform: translateY(100%) skewX(45deg);
+}
+#messagebox .wdpu-msg:before {
+  content: '';
+
+  background: rgb(80,80,80);
+  background: -moz-linear-gradient(left,  rgba(80,80,80,1) 0%, rgba(100,100,100,1) 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(80,80,80,1)), color-stop(100%,rgba(100,100,100,1)));
+  background: -webkit-linear-gradient(left,  rgba(80,80,80,1) 0%,rgba(100,100,100,1) 100%);
+  background: -o-linear-gradient(left,  rgba(80,80,80,1) 0%,rgba(100,100,100,1) 100%);
+  background: -ms-linear-gradient(left,  rgba(80,80,80,1) 0%,rgba(100,100,100,1) 100%);
+  background: linear-gradient(to right,  rgba(80,80,80,1) 0%,rgba(100,100,100,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#505050', endColorstr='#646464',GradientType=1 );
+
+  position: absolute;
+  width: 20px;
+  height: 100%;
+  right: 0;
+  transform: translateX(100%) skewY(45deg);
+  top: 10px;
+}
+#messagebox .wdpu-msg p {
+  font-size: 15px;
+}
+#messagebox .wdpu-msg p:first-child {
+  margin-top: 0;
+}
+#messagebox .wdpu-msg p:last-child {
+  margin-bottom: 0;
+}
+#messagebox .wdpu-close {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 30px;
+  height: 30px;
+  text-decoration: none;
+  opacity: .9;
+  z-index: 10;
+  background: transparent url(%styleurl%img/close.png) no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  #messagebox .wdpu-close {
+    background: transparent url(%styleurl%img/close@2x.png) no-repeat;
+    background-size: 30px 30px;
+  }
+}
+#messagebox .wdpu-close:hover {
+  opacity: 1;
+}
+#messagebox .wdpu-msg-inner {
+  margin: 0px auto;
+  background: #F2F2F2;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  height: 100%;
+}
+#messagebox .wdpu-msg-inner.custom-size {
+  max-width: none;
+  min-width: 0;
+}
+#messagebox .wdpu-text,
+#messagebox .wdpu-image {
+  vertical-align: middle;
+  display: inline-block;
+  box-sizing: border-box;
+}
+#messagebox .wdpu-text {
+  padding: 20px 20px 64px;
+  background: #F2F2F2;
+  position: relative;
+  z-index: 10;
+  height: 100%;
+}
+#messagebox .wdpu-image {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+#messagebox .wdpu-image img {
+  height: 100%;
+  width: auto;
+  position: relative;
+}
+#messagebox .wdpu-inner {
+  overflow: auto;
+  height: 100%;
+}
+#messagebox .wdpu-inner.no-bm {
+  margin: 0;
+}
+#messagebox .wdpu-buttons {
+  position: absolute;
+  padding: 20px;
+  height: 24px;
+  margin: 0 -20px -20px;
+  white-space: nowrap;
+}
+#messagebox a {
+  color: #000001;
+  text-decoration: underline;
+  opacity: .9;
+}
+#messagebox a:visited {
+  color: #000001;
+}
+#messagebox a:hover,
+#messagebox a:active,
+#messagebox a:focus {
+  color: #000001;
+  opacity: 1;
+}
+#messagebox .wdpu-head {
+  padding-bottom: .5em;
+  margin-bottom: 1em;
+}
+#messagebox .wdpu-title,
+#messagebox .wdpu-subtitle {
+  font-size: 22.5px;
+  line-height: 1.3em;
+  margin: 0 0 .5em 0;
+  color: #000001;
+}
+#messagebox .wdpu-title {
+  font-weight: bold;
+}
+#messagebox .wdpu-subtitle {
+  font-weight: 100;
+}
+#messagebox .wdpu-cta {
+  position: relative;
+  line-height: 1.2em;
+  padding: 10px 30px;
+  opacity: .9;
+  margin: 0 20px 0 0;
+  text-decoration: none;
+  background: #488CFD;
+  color: #FFF;
+  top: 0;
+  left: 0;
+}
+#messagebox .wdpu-cta:visited {
+  color: #FFF;
+}
+#messagebox .wdpu-cta:hover,
+#messagebox .wdpu-cta:active,
+#messagebox .wdpu-cta:focus {
+  color: #FFF;
+  opacity: 1;
+}
+#messagebox .wdpu-cta:after {
+  content: '';
+  background: #285CAD;
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  left: 5px;
+  bottom: 0;
+  transform: translateY(100%) skewX(45deg);
+}
+#messagebox .wdpu-cta:before {
+  content: '';
+  background: #386CBD;
+  position: absolute;
+  width: 10px;
+  height: 100%;
+  right: 0;
+  transform: translateX(100%) skewY(45deg);
+  top: 5px;
+}
+#messagebox .wdpu-cta:hover {
+  top: 4px;
+  left: 4px;
+}
+#messagebox .wdpu-cta:hover:after {
+  height: 6px;
+  left: 3px;
+}
+#messagebox .wdpu-cta:hover:before {
+  width: 6px;
+  top: 3px;
+}
+#messagebox .wdpu-text {
+  margin: 0 40% 0 0;
+  width: 60%;
+}
+#messagebox .wdpu-image {
+  text-align: right;
+  right: 0;
+  width: 40%;
+}
+#messagebox.img-left .wdpu-text {
+  margin: 0 0 0 40%;
+  margin-right: 0;
+  width: 60%;
+}
+#messagebox.img-left .wdpu-image {
+  text-align: left;
+  right: auto;
+  left: 0;
+}
+#messagebox.no-img .wdpu-text {
+  margin: 0;
+  width: 100%;
+}
+#messagebox.no-img .wdpu-image {
+  display: none;
+}
+#messagebox.rounded .wdpu-cta {
+  border-radius: 5px;
+}
+#messagebox.rounded .wdpu-msg {
+  border-radius: 10px;
+}
+#messagebox.rounded .wdpu-msg-inner {
+  border-radius: 6px;
+}
+
+/* Responsive Layout: Medium (Tablet) */
+@media screen and (max-width: 770px) and (min-width: 480px) {
+  #messagebox {
+    padding: 0 54px 0 50px;
+  }
+  #messagebox .wdpu-image,
+  #messagebox.img-right .wdpu-image,
+  #messagebox.img-left .wdpu-image,
+  #messagebox.no-img .wdpu-image {
+    width: 100%;
+    position: relative;
+    display: block;
+    max-height: 250px;
+  }
+  #messagebox .wdpu-image img,
+  #messagebox.img-right .wdpu-image img,
+  #messagebox.img-left .wdpu-image img,
+  #messagebox.no-img .wdpu-image img {
+    height: auto;
+    width: 100%;
+  }
+  #messagebox .wdpu-text,
+  #messagebox.img-right .wdpu-text,
+  #messagebox.img-left .wdpu-text,
+  #messagebox.no-img .wdpu-text {
+    margin: 0;
+    width: 100%;
+    padding-top: 15px;
+  }
+  #messagebox .wdpu-head,
+  #messagebox.img-right .wdpu-head,
+  #messagebox.img-left .wdpu-head,
+  #messagebox.no-img .wdpu-head {
+    margin-bottom: .5em;
+    padding-bottom: .4em;
+  }
+  #messagebox .wdpu-title,
+  #messagebox .wdpu-subtitle,
+  #messagebox.img-right .wdpu-title,
+  #messagebox.img-right .wdpu-subtitle,
+  #messagebox.img-left .wdpu-title,
+  #messagebox.img-left .wdpu-subtitle,
+  #messagebox.no-img .wdpu-title,
+  #messagebox.no-img .wdpu-subtitle {
+    margin-bottom: .2em;
+  }
+  #messagebox p,
+  #messagebox.img-right p,
+  #messagebox.img-left p,
+  #messagebox.no-img p {
+    margin-bottom: 16px;
+  }
+  #messagebox.mobile-no-img .wdpu-image {
+    display: none;
+  }
+}
+
+/* Responsive Layout: Small (Phone) */
+@media screen and (max-width: 480px) {
+  #messagebox {
+    padding: 0 14px 0 10px;
+  }
+  #messagebox .wdpu-image,
+  #messagebox.img-right .wdpu-image,
+  #messagebox.img-left .wdpu-image,
+  #messagebox.no-img .wdpu-image {
+    width: 100%;
+    position: relative;
+    display: block;
+    max-height: 150px;
+  }
+  #messagebox .wdpu-image img,
+  #messagebox.img-right .wdpu-image img,
+  #messagebox.img-left .wdpu-image img,
+  #messagebox.no-img .wdpu-image img {
+    height: auto;
+    width: 100%;
+  }
+  #messagebox .wdpu-text,
+  #messagebox.img-right .wdpu-text,
+  #messagebox.img-left .wdpu-text,
+  #messagebox.no-img .wdpu-text {
+    margin: 0;
+    width: 100%;
+    padding-top: 10px;
+  }
+  #messagebox .wdpu-head,
+  #messagebox.img-right .wdpu-head,
+  #messagebox.img-left .wdpu-head,
+  #messagebox.no-img .wdpu-head {
+    margin-bottom: .3em;
+    padding-bottom: .2em;
+  }
+  #messagebox .wdpu-title,
+  #messagebox .wdpu-subtitle,
+  #messagebox.img-right .wdpu-title,
+  #messagebox.img-right .wdpu-subtitle,
+  #messagebox.img-left .wdpu-title,
+  #messagebox.img-left .wdpu-subtitle,
+  #messagebox.no-img .wdpu-title,
+  #messagebox.no-img .wdpu-subtitle {
+    margin-bottom: .2em;
+  }
+  #messagebox p,
+  #messagebox.img-right p,
+  #messagebox.img-left p,
+  #messagebox.no-img p {
+    margin-bottom: 8px;
+  }
+  #messagebox.mobile-no-img .wdpu-image {
+    display: none;
+  }
+}

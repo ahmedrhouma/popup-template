@@ -1,0 +1,2 @@
+<?php
+$info->name = 'Isometric';
